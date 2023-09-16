@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "EntityStats", menuName = "Stats/CharacterStats", order = 0)]
+public class CharacterStats : EntityStats
+{
+    
+    [SerializeField] private CharacterStatsValues _characterStats;
+    public float MovementSpeed => _characterStats.MovementSpeed;
+    public float RotateSpeed => _characterStats.RotateSpeed;
+}
+
+[System.Serializable]
+public struct CharacterStatsValues
+{
+    public float MovementSpeed;
+    public float RotateSpeed;
+}
