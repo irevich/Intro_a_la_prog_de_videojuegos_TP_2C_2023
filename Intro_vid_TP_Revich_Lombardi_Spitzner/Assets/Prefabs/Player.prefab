@@ -941,6 +941,7 @@ MonoBehaviour:
   _moveLeft: 97
   _moveRight: 100
   _jump: 32
+  _slide: 306
   _movementSpeed: 5.5
   _turnSpeed: 50
 --- !u!1 &7842906468668176095

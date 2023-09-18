@@ -15,6 +15,7 @@ public class Character : MonoBehaviour, IMoveable
     [SerializeField] private KeyCode _moveLeft = KeyCode.A;
     [SerializeField] private KeyCode _moveRight = KeyCode.D;
     [SerializeField] private KeyCode _jump = KeyCode.Space;
+    [SerializeField] private KeyCode _slide = KeyCode.LeftControl;
 
     // [SerializeField] private KeyCode _attack = KeyCode.Mouse0;
     // [SerializeField] private KeyCode _reload = KeyCode.R;
@@ -41,13 +42,23 @@ public class Character : MonoBehaviour, IMoveable
         else animator.SetFloat("walking", 0);
         if (Input.GetKeyDown(_moveForward)) animator.SetFloat("walking", 1);
 
-        if (Input.GetKey(_moveBack)) Move(Vector3.back);
+        if (Input.GetKey(_moveBack)) 
+        {
+            Move(Vector3.back);
+            animator.SetBool("backwards", true);
+        }
+        else animator.SetBool("backwards", false);
         if (Input.GetKey(_moveLeft)) Turn(-Vector3.up);
         if (Input.GetKey(_moveRight)) Turn(Vector3.up);
         if (Input.GetKeyDown(_jump) || Input.GetKey(_jump)) animator.SetBool("jumping", true);
         else
         {
             animator.SetBool("jumping", false);
+        }
+        if (Input.GetKey(_slide)) animator.SetBool("slide", true);
+        else
+        {
+            animator.SetBool("slide", false);
         }
 
         
