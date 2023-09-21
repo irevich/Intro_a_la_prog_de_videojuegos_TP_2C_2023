@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClip _victory;
     [SerializeField] private AudioClip _defeat;
+    [SerializeField] private AudioClip _characterSpotted;
     
     [SerializeField] private AudioSource _audioSource;
     
@@ -17,6 +18,7 @@ public class SoundManager : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         EventsManager.instance.OnGameOver += OnGameOver;
+        EventsManager.instance.OnCharacterSpotted += OnCharacterSpotted;
     }
 
     #endregion
@@ -27,6 +29,11 @@ public class SoundManager : MonoBehaviour
     {
         _audioSource.PlayOneShot(isVictory ? _victory : _defeat);
         
+    }
+    
+    private void OnCharacterSpotted()
+    {
+        _audioSource.PlayOneShot(_characterSpotted);
     }
 
     #endregion
