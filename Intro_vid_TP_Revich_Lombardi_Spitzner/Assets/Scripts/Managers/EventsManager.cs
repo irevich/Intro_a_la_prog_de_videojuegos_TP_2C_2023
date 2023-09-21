@@ -11,6 +11,7 @@ public class EventsManager : MonoBehaviour
     #region UNITY_EVENTS
     private void Awake()
     {
+        print("En awake del events manager");
         if (instance != null)
             Destroy(this); // Asegurarse de que tenga lo mas basico
         instance = this;
@@ -46,6 +47,18 @@ public class EventsManager : MonoBehaviour
     {
         if (OnCharacterHealthChanged != null)
             OnCharacterHealthChanged(currentHealth, maxHealth);
+    }
+
+    #endregion
+
+    #region STUDENT_ACTIONS
+    public event Action<int, int> OnStudentLifeDamage;
+
+    public void StudentLifeDamage(int currentLife, int maxLife){
+
+        if (OnStudentLifeDamage != null)
+            OnStudentLifeDamage(currentLife,maxLife);
+
     }
 
     #endregion

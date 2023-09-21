@@ -6,10 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip _victory;
-    [SerializeField] private AudioClip _defeat;
-    [SerializeField] private AudioClip _characterSpotted;
-    
+    //Game audioclips
+    [SerializeField] private AudioClip _backgroundMusic;
+    [SerializeField] private AudioClip _schoolBellFX;
+    [SerializeField] private AudioClip _maleHurtFX;
+    private int _maleHurtVolumeScale = 15;
+
     [SerializeField] private AudioSource _audioSource;
     
     #region UNITY_EVENTS
@@ -17,6 +19,15 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        //First play the school bell FX
+        _audioSource.PlayOneShot(_schoolBellFX);
+        //Then, play the background music
+        _audioSource.clip = _backgroundMusic;
+        _audioSource.loop = true;
+        _audioSource.Play();
+        //Subscription to events
+        print($"Event manager instance is null : {EventsManager.instance == null}");
+        EventsManager.instance.OnStudentLifeDamage += OnStudentLifeDamage;
         EventsManager.instance.OnGameOver += OnGameOver;
         EventsManager.instance.OnCharacterSpotted += OnCharacterSpotted;
     }
@@ -25,10 +36,8 @@ public class SoundManager : MonoBehaviour
 
     #region EVENTS
 
-    private void OnGameOver(bool isVictory)
-    {
-        _audioSource.PlayOneShot(isVictory ? _victory : _defeat);
-        
+    private void OnStudentLifeDamage(int currentLife, int maxLife){
+        _audioSource.PlayOneShot(_maleHurtFX,_maleHurtVolumeScale);
     }
     
     private void OnCharacterSpotted()
