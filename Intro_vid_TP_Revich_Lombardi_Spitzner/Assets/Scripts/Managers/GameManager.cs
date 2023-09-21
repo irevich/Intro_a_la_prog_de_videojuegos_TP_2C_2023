@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         EventsManager.instance.OnGameOver += OnGameOver;
-        _gameOverText.text = string.Empty;
+        //_gameOverText.text = string.Empty;
     }
     
     

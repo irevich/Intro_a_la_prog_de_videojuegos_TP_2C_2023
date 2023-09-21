@@ -28,6 +28,8 @@ public class SoundManager : MonoBehaviour
         //Subscription to events
         print($"Event manager instance is null : {EventsManager.instance == null}");
         EventsManager.instance.OnStudentLifeDamage += OnStudentLifeDamage;
+        EventsManager.instance.OnGameOver += OnGameOver;
+        EventsManager.instance.OnCharacterSpotted += OnCharacterSpotted;
     }
 
     #endregion
@@ -36,6 +38,11 @@ public class SoundManager : MonoBehaviour
 
     private void OnStudentLifeDamage(int currentLife, int maxLife){
         _audioSource.PlayOneShot(_maleHurtFX,_maleHurtVolumeScale);
+    }
+    
+    private void OnCharacterSpotted()
+    {
+        _audioSource.PlayOneShot(_characterSpotted);
     }
 
     #endregion
