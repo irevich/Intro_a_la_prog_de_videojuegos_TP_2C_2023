@@ -2261,7 +2261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3328470371964130, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.32
+      value: 5.81
       objectReference: {fileID: 0}
     - target: {fileID: 3328470371964130, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2269,7 +2269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3328470371964130, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: -16.82
       objectReference: {fileID: 0}
     - target: {fileID: 3328470371964130, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2304,9 +2304,17 @@ PrefabInstance:
       value: Teacher
       objectReference: {fileID: 0}
     - target: {fileID: 6263381101827804825, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
+      propertyPath: _radius
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263381101827804825, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 1762130207}
+    - target: {fileID: 6263381101827804825, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
+      propertyPath: _detectionDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
 --- !u!4 &3520146418552483495
@@ -3672,7 +3680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3907468954384810978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.74, y: -6.6900587, z: 3.87}
+  m_LocalPosition: {x: 4.41, y: -6.6900587, z: -1.57}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3731,6 +3739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 1762130207}
   _speed: 1
+  _detectionDistance: 15
 --- !u!4 &3907468954385178118
 Transform:
   m_ObjectHideFlags: 0
