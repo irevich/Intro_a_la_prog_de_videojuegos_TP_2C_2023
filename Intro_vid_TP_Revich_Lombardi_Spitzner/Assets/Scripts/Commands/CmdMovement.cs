@@ -15,6 +15,7 @@ public class CmdMovement : ICommand
     
     public void Do()
     {
+        Debug.Log("Doing Move");
         _transform.Translate(_direction * (_speed * Time.deltaTime));
     }
 }

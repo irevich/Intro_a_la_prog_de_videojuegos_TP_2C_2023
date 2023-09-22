@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028353, g: 0.22571383, b: 0.30692253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -243,9 +243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cc1585bbf386d42b6f5d36dd91d8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _victory: {fileID: 0}
-  _defeat: {fileID: 0}
-  _characterSpotted: {fileID: 0}
+  _backgroundMusic: {fileID: 0}
+  _schoolBellFX: {fileID: 0}
+  _maleHurtFX: {fileID: 0}
+  _spottedFX: {fileID: 0}
   _audioSource: {fileID: 0}
 --- !u!82 &53611807
 AudioSource:
@@ -395,7 +396,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &89008429
 PrefabInstance:
@@ -1142,6 +1143,7 @@ MonoBehaviour:
   _backgroundMusic: {fileID: 8300000, guid: 67b7d4ccc5179e74b9e51ea95d0c3f24, type: 3}
   _schoolBellFX: {fileID: 8300000, guid: 616c2b7d01918844f88a52faedab4942, type: 3}
   _maleHurtFX: {fileID: 8300000, guid: 4cfbd2f4107214044b8b32a68e86894d, type: 3}
+  _spottedFX: {fileID: 0}
   _audioSource: {fileID: 0}
 --- !u!4 &1020201644
 Transform:
@@ -1644,7 +1646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1499723584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,7 +1757,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1533626430
 PrefabInstance:
@@ -2019,6 +2021,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7842906468658775206, guid: b6c9fff05956540dc9afb856a2869454, type: 3}
+      propertyPath: _entityStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 873650c65e267da42a6a1fe8f947ec17, type: 2}
+    - target: {fileID: 7842906468658775206, guid: b6c9fff05956540dc9afb856a2869454, type: 3}
+      propertyPath: _studentStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 873650c65e267da42a6a1fe8f947ec17, type: 2}
     - target: {fileID: 7842906468668140337, guid: b6c9fff05956540dc9afb856a2869454, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
