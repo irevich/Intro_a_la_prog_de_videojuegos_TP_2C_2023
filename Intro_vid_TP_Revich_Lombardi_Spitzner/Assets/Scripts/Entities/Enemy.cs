@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     
     private Collider _collider;
     private Rigidbody _rigidbody;
+    private Animator _animator;
     
     #region UNITY_EVENTS
 
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
         _collider.isTrigger = true;
         _rigidbody.isKinematic = true;
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        _animator = gameObject.GetComponent<Animator>();
     }
 
     private void Update()
@@ -39,6 +41,13 @@ public class Enemy : MonoBehaviour
             // TODO: speed and IMovable
             // transform.position = Vector3.MoveTowards(transform.position, 
             //     _target.position, _speed * Time.deltaTime);
+            if (_target.position.x > transform.position.x)
+            {
+                _animator.Play("Move Right");
+            } else if (_target.position.x < transform.position.x)
+            {
+                _animator.Play("Move Left");
+            }
             transform.position = Vector3.MoveTowards(transform.position,newPos, _speed * Time.deltaTime);
     }
 
