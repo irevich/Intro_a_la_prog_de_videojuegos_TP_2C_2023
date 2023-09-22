@@ -7,6 +7,8 @@ public class Student : Actor, IMoveable
     // [SerializeField] private List<Gun> _guns;
     // [SerializeField] private Gun _currentGun;
     public Animator animator;
+    
+    [SerializeField] private StudentStats _studentStats;
 
 
     #region KEY_BINDINGS
@@ -23,8 +25,10 @@ public class Student : Actor, IMoveable
     // Start is called before the first frame update
     void Start()
     {
+        base._entityStats = _studentStats;
         base.Start();
         // SwitchGun(0);
+        InitMovementCommands();
     }
 
     // Update is called once per frame
@@ -32,20 +36,28 @@ public class Student : Actor, IMoveable
     {
         if (Input.GetKey(_moveForward)) 
         {
-            Move(Vector3.forward);
+            EventQueueManager.instance.AddEvent(_cmdMoveForward);
             animator.SetFloat("walking", 1);
         }
         else animator.SetFloat("walking", 0);
-        if (Input.GetKeyDown(_moveForward)) animator.SetFloat("walking", 1);
+        
+        if (Input.GetKeyDown(_moveForward)) 
+            animator.SetFloat("walking", 1);
 
         if (Input.GetKey(_moveBack)) 
         {
-            Move(Vector3.back);
+            EventQueueManager.instance.AddEvent(_cmdMoveBack);
             animator.SetBool("backwards", true);
         }
+        
         else animator.SetBool("backwards", false);
-        if (Input.GetKey(_moveLeft)) Turn(-Vector3.up);
-        if (Input.GetKey(_moveRight)) Turn(Vector3.up);
+        
+        if (Input.GetKey(_moveLeft)) 
+            EventQueueManager.instance.AddEvent(_cmdRotateLeft);
+        
+        if (Input.GetKey(_moveRight)) 
+            EventQueueManager.instance.AddEvent(_cmdRotateRight);
+        
         if (Input.GetKeyDown(_jump) || Input.GetKey(_jump)) animator.SetBool("jumping", true);
         else
         {
@@ -58,10 +70,27 @@ public class Student : Actor, IMoveable
         }
 
         //Simulate hurt
+        // TODO: take damage commmand?
         if (Input.GetKeyDown(_hurt)) TakeDamage(5);
-
     }
 
+    #region MOVEMENT_CMD
+
+    private CmdMovement _cmdMoveForward;
+    private CmdMovement _cmdMoveBack;
+    private CmdRotate _cmdRotateLeft;
+    private CmdRotate _cmdRotateRight;
+
+    private void InitMovementCommands()
+    {
+        _cmdMoveForward = new CmdMovement(transform, Vector3.forward, _studentStats.MovementSpeed);
+        _cmdMoveBack = new CmdMovement(transform, -Vector3.forward, _studentStats.MovementSpeed);
+        _cmdRotateLeft = new CmdRotate(transform, -Vector3.up, _studentStats.RotateSpeed);
+        _cmdRotateRight = new CmdRotate(transform, Vector3.up, _studentStats.RotateSpeed);
+    }
+    
+    #endregion
+    
     #region IMOVEABLE_ACTIONS
     public float MovementSpeed => _movementSpeed;
     [SerializeField] private float _movementSpeed = 5.5f;

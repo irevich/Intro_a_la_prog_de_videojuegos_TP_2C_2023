@@ -6,16 +6,17 @@ public class Actor : MonoBehaviour, IDamageable
 {
 
     #region IDAMAGEABLE_PROPERTIES
-    public int MaxLife => _maxLife;
+    public int MaxLife => _entityStats.MaxLife;
 
     public int Life => _life;
 
     #endregion
 
     #region PRIVATE_PROPERTIES
-
-    [SerializeField] private int _life; //currentLife
-    [SerializeField] private int _maxLife;
+    
+    public EntityStats Stats => _entityStats;
+    private int _life;
+    [SerializeField] protected EntityStats _entityStats;
 
     #endregion
 
@@ -23,7 +24,6 @@ public class Actor : MonoBehaviour, IDamageable
 
     protected void Start()
     {
-        _maxLife = 100;
         _life = MaxLife;
         //EventsManager.instance.StudentLifeDamage(Life, MaxLife);
     }
