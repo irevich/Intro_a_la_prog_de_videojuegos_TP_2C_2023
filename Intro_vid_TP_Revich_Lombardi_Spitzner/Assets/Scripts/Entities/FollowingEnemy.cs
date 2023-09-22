@@ -6,7 +6,10 @@ public class FollowingEnemy : Enemy
 {
    protected override void MoveTowardsPlayer()
    {
-    transform.position = Vector3.MoveTowards(transform.position, 
+      Vector3 lookPos = _target.position;
+      lookPos.y = transform.position.y;
+      transform.position = Vector3.MoveTowards(transform.position, 
                 _target.position, _speed * Time.deltaTime);
+      transform.LookAt(lookPos);
    }
 }

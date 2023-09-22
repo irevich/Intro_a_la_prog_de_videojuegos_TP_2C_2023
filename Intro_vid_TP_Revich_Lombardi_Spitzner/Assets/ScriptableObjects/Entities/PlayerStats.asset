@@ -15,5 +15,5 @@ MonoBehaviour:
   _stats:
     MaxLife: 100
   studentStats:
-    MovementSpeed: 5.5
-    RotateSpeed: 50
+    MovementSpeed: 15
+    RotateSpeed: 500
