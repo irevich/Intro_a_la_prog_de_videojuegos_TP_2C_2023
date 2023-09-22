@@ -6,7 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
-    private Transform _target;
+    public Transform _target;
+    public float _speed = 3f;
     
     public Collider Collider => _collider;
     public Rigidbody Rb => _rigidbody;
@@ -31,13 +32,21 @@ public class Enemy : MonoBehaviour
         
     }
 
+    protected virtual void MoveTowardsPlayer()
+    {
+        Vector3 newPos = transform.position;
+            newPos.x = _target.position.x;
+            // TODO: speed and IMovable
+            // transform.position = Vector3.MoveTowards(transform.position, 
+            //     _target.position, _speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position,newPos, _speed * Time.deltaTime);
+    }
+
     private void FixedUpdate()
     {
         if (_target)
         {
-            // TODO: speed and IMovable
-            transform.position = Vector3.MoveTowards(transform.position, 
-                _target.position, 5f * Time.deltaTime);
+            MoveTowardsPlayer();
         }
 
         else
