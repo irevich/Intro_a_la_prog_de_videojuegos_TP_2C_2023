@@ -101,8 +101,8 @@ public class Student : Actor, IMoveable
 
     public float TurnSpeed => _turnSpeed;
     [SerializeField] private float _turnSpeed = 25f;
-    public void Move(Vector3 direction) => transform.Translate(direction * Time.deltaTime * _movementSpeed);
-    public void Turn(Vector3 direction) => transform.Rotate(direction * Time.deltaTime * _turnSpeed, Space.Self);
+    public void Move(Vector3 direction) => transform.Translate(direction * _movementSpeed * Time.deltaTime);
+    public void Turn(Vector3 direction) => transform.Rotate(direction * _turnSpeed * Time.deltaTime, Space.Self);
     #endregion
 
 
