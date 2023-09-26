@@ -3,57 +3,7 @@ guid: 6413da950598147cdbba344763a260e3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cloth
-    second: {fileID: 2100000, guid: e0bbdadb9978643ada1d13d1d2b53387, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ko'z
-    second: {fileID: 2100000, guid: 6a51422365cab44a9990d5f6dfa47401, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SUYUQLIK
-    second: {fileID: 2100000, guid: 16b3b83631adf4eb19287d570b241d14, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Shoes
-    second: {fileID: 2100000, guid: 489086253bbe7457e8996707ed9f6abe, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: colba
-    second: {fileID: 2100000, guid: e50104a70fa5d4ba1a61b929e2cc9df4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: glass
-    second: {fileID: 2100000, guid: e3f46db21c19c44378fddd52fccecfdc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ochki
-    second: {fileID: 2100000, guid: 1927421959d3e4ee1b845918b899298e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: shim
-    second: {fileID: 2100000, guid: 88a668135175a46eab6efd10227b00cb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: soch
-    second: {fileID: 2100000, guid: 87c3f0c0951284550b8e8994f972980f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: teri
-    second: {fileID: 2100000, guid: 81f1fc540939c4aed90c802f8997e28c, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -66,8 +16,7 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'Hips' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -75,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -86,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -131,57 +80,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton:
-    - name: teacher(Clone)
-      parentName: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Cube.005
-      parentName: teacher(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 100, y: 100, z: 100}
-    - name: Cube.007
-      parentName: teacher(Clone)
-      position: {x: 0.08970584, y: 0.11004837, z: 1.3698509}
-      rotation: {x: 0.633015, y: -0.07972383, z: 0.75876266, w: -0.13120744}
-      scale: {x: 0.7418614, y: 0.7418612, z: 0.7418612}
-    - name: Cube.006
-      parentName: teacher(Clone)
-      position: {x: 0.086143754, y: -0.49356312, z: 0.20146891}
-      rotation: {x: -0.019086136, y: 0.70685744, z: -0.70685726, w: 0.018468626}
-      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000007}
-    - name: Cube.001
-      parentName: teacher(Clone)
-      position: {x: -0.00010334681, y: 0.17162675, z: 0.48251945}
-      rotation: {x: -0.097270824, y: 1.9276072e-10, z: -7.995998e-11, w: 0.995258}
-      scale: {x: 1, y: 1.0000001, z: 0.99999994}
-    - name: colbs_kichkina
-      parentName: teacher(Clone)
-      position: {x: -0.09974223, y: 0.13321762, z: 1.2613229}
-      rotation: {x: 0.07182949, y: 0.06583369, z: 0.97806454, w: 0.18410943}
-      scale: {x: 0.75071377, y: 0.7507136, z: 0.7507137}
-    - name: suyuqlik_kichkina
-      parentName: teacher(Clone)
-      position: {x: -0.09974211, y: 0.13321763, z: 1.2613233}
-      rotation: {x: 0.18097639, y: 0.7381478, z: 0.64504427, w: 0.079393946}
-      scale: {x: 0.7507138, y: 0.7507137, z: 0.7507136}
-    - name: colba katta
-      parentName: teacher(Clone)
-      position: {x: 0.08970587, y: 0.11004842, z: 1.3698509}
-      rotation: {x: 0.63301504, y: -0.0797238, z: 0.7587626, w: -0.13120747}
-      scale: {x: 0.74186134, y: 0.7418612, z: 0.74186116}
-    - name: Sphere.001
-      parentName: teacher(Clone)
-      position: {x: 0.08970609, y: 0.110048525, z: 1.3698508}
-      rotation: {x: -0.35483146, y: -0.48015293, z: -0.5928994, w: 0.540387}
-      scale: {x: 0.74186116, y: 0.741861, z: 0.7418611}
-    - name: Cube.008
-      parentName: teacher(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 100, y: 100, z: 100}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -189,16 +88,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.1
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

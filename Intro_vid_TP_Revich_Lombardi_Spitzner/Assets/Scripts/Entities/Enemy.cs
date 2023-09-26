@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using System.Collections;
 using Random=UnityEngine.Random;
 
 
@@ -79,6 +80,7 @@ public class Enemy : MonoBehaviour
     //     if (_angle >= 360.0f)
     //         _angle -= 360.0f;
     // }
+
 
     protected virtual void UndetectedMove()
     {
