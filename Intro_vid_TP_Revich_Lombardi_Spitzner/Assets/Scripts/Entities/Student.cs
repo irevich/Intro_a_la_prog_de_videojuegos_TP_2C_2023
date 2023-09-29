@@ -36,8 +36,9 @@ public class Student : Actor, IMoveable
     {
         if (Input.GetKey(_moveForward)) 
         {
-            EventQueueManager.instance.AddEvent(_cmdMoveForward);
-            //_cmdMoveForward.Do();
+            //EventQueueManager.instance.AddEvent(_cmdMoveForward);
+            // Move(Vector3.forward);
+            _cmdMoveForward.Do();
             animator.SetFloat("walking", 1);
         }
         else animator.SetFloat("walking", 0);
@@ -47,20 +48,27 @@ public class Student : Actor, IMoveable
 
         if (Input.GetKey(_moveBack)) 
         {
-            EventQueueManager.instance.AddEvent(_cmdMoveBack);
-            //_cmdMoveBack.Do();
+            //EventQueueManager.instance.AddEvent(_cmdMoveBack);
+            // Move(Vector3.back);
+            _cmdMoveBack.Do();
             animator.SetBool("backwards", true);
         }
         
         else animator.SetBool("backwards", false);
 
-        if (Input.GetKey(_moveLeft))
-            EventQueueManager.instance.AddEvent(_cmdRotateLeft);
-        //_cmdRotateLeft.Do();
+        if (Input.GetKey(_moveLeft)) {
+            //EventQueueManager.instance.AddEvent(_cmdRotateLeft);
+            // Turn(-Vector3.up);
+            _cmdRotateLeft.Do();
+        }
+        
 
-        if (Input.GetKey(_moveRight))
-            EventQueueManager.instance.AddEvent(_cmdRotateRight);
-        //_cmdRotateRight.Do();
+        if (Input.GetKey(_moveRight)) {
+            //EventQueueManager.instance.AddEvent(_cmdRotateRight);
+            //Turn(Vector3.up);
+            _cmdRotateRight.Do();
+        }
+        
 
         if (Input.GetKeyDown(_jump) || Input.GetKey(_jump)) animator.SetBool("jumping", true);
         else
