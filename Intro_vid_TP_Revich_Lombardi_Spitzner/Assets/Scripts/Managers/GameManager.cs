@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -28,10 +29,17 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
         _isVictory = isVictory;
         
-        _gameOverText.text = _isVictory ? "You Win!" : "You Lose!";
-        _gameOverText.color = _isVictory ? Color.green : Color.red;
+        //_gameOverText.text = _isVictory ? "You Win!" : "You Lose!";
+        //_gameOverText.color = _isVictory ? Color.green : Color.red;
+        
+        Invoke(nameof(LoadCreditsScreen), 3f);
     }
-    
 
+
+    private void LoadCreditsScreen()
+    {
+        SceneManager.LoadScene(_isGameOver && _isVictory ? 
+            (int)Enums.Levels.Victory : (int)Enums.Levels.Defeat);
+    }
     #endregion
 }
