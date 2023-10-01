@@ -1,11 +1,12 @@
 
 using System;
 using UnityEngine;
+using System.Collections;
 using Random=UnityEngine.Random;
 
 
 // Hace que le agregue esos componentes
-[RequireComponent(typeof(Collider), typeof(Rigidbody))]
+[RequireComponent(typeof(SphereCollider), typeof(CapsuleCollider), typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
     public Transform _target;
@@ -13,10 +14,13 @@ public class Enemy : MonoBehaviour
     public float _detectionDistance = 15.0f;
 
 
-    public Collider Collider => _collider;
+    public SphereCollider SphereCollider => _sphereCollider;
+    
+    public CapsuleCollider CapsuleCollider => _capsuleCollider;
     public Rigidbody Rb => _rigidbody;
     
-    private Collider _collider;
+    private SphereCollider _sphereCollider;
+    private CapsuleCollider _capsuleCollider;
     private Rigidbody _rigidbody;
     private Animator _animator;
     
@@ -24,10 +28,15 @@ public class Enemy : MonoBehaviour
 
     protected void Start()
     {
-        _collider = GetComponent<Collider>();
+        _sphereCollider = GetComponent<SphereCollider>();
         _rigidbody = GetComponent<Rigidbody>();
         
-        _collider.isTrigger = true;
+        _sphereCollider.isTrigger = true;
+        _sphereCollider.radius = 20f; // TODO: move to stats 
+        
+        _capsuleCollider = GetComponent<CapsuleCollider>();
+        _capsuleCollider.isTrigger = false;
+        
         _rigidbody.isKinematic = true;
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         _animator = gameObject.GetComponent<Animator>();
@@ -80,6 +89,7 @@ public class Enemy : MonoBehaviour
     //         _angle -= 360.0f;
     // }
 
+
     protected virtual void UndetectedMove()
     {
         Vector3 newPos = transform.position+RandomVector(-5,5);
@@ -92,39 +102,58 @@ public class Enemy : MonoBehaviour
             }
         transform.position = Vector3.MoveTowards(transform.position,newPos, _speed * Time.deltaTime);
     }
-
     private void FixedUpdate()
     {
         if (_target)
         {
-            if (Vector3.Distance(transform.position,_target.position) <= _detectionDistance) MoveTowardsPlayer();
-            else
-            {
-                UndetectedMove();
-            }
-            
+            //if (Vector3.Distance(transform.position,_target.position) <= _detectionDistance) MoveTowardsPlayer();
+            MoveTowardsPlayer();
+        }
+        else
+        {
+            UndetectedMove();
         }
 
     }
-
     #endregion
 
     #region TRIGGER_EVENTS
-    // TODO: capaz hacerlo con tags
     private void OnTriggerEnter(Collider other)
     {
         // TODO: ojo con el nombre
-        if (other.name.Equals("Player"))
+        if (other.tag.Equals(Enums.Tags.Player.ToString()))
         {
-            //_target = other.transform;
+            _target = other.transform;
             EventsManager.instance.EventCharacterSpotted();
         }
     }
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.name.Equals("Player"))
+        if (other.tag.Equals(Enums.Tags.Player.ToString()))
             _target = null;
     }
+    #endregion
+
+    #region COLLIDER_EVENTS
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag.Equals(Enums.Tags.Player.ToString()))
+        {
+            IDamageable toDamage = other.gameObject.GetComponent<IDamageable>();
+            if (toDamage != null)
+            {
+                EventQueueManager.instance.AddEvent(new CmdAttack(1, toDamage));
+                
+                // TODO: fijarse que este sea el evento indicado
+                EventsManager.instance.StudentLifeDamage(
+                    other.gameObject.GetComponent<Actor>().Life, 
+                    other.gameObject.GetComponent<Actor>().MaxLife);
+                Debug.Log("Player hit!!");
+            }
+        }
+    }
+
     #endregion
 }

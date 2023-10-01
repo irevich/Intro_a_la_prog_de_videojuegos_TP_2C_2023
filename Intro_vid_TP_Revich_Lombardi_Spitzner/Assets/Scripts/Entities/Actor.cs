@@ -21,14 +21,11 @@ public class Actor : MonoBehaviour, IDamageable
     #endregion
 
     #region UNITY_EVENTS
-
     protected void Start()
     {
         _life = MaxLife;
         //EventsManager.instance.StudentLifeDamage(Life, MaxLife);
     }
-
-
     #endregion
 
     #region IDAMAGEABLE_METHODS

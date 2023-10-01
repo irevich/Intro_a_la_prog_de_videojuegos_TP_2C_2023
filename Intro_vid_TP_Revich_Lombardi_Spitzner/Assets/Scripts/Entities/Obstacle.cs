@@ -2,24 +2,24 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider), typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class Obstacle : MonoBehaviour
 {
     public Collider Collider => _collider;
-    public Rigidbody Rb => _rigidbody;
+    //public Rigidbody Rb => _rigidbody;
     
     private Collider _collider;
-    private Rigidbody _rigidbody;
+    //private Rigidbody _rigidbody;
     
     #region UNITY_EVENTS
 
     private void Start()
     {
         _collider = GetComponent<Collider>();
-        _rigidbody = GetComponent<Rigidbody>();
+        //_rigidbody = GetComponent<Rigidbody>();
         
-        _rigidbody.isKinematic = false;
-        _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        //_rigidbody.isKinematic = false;
+        //_rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
     }
 
     #endregion
@@ -31,8 +31,18 @@ public class Obstacle : MonoBehaviour
         // TODO: capaz hacerlo con tags o layers como vimos en clase
         if (other.gameObject.name.Equals("Player"))
         {
-            // Lastimarlo
-            Debug.Log("Player hit!!");
+            IDamageable toDamage = other.gameObject.GetComponent<IDamageable>();
+            if (toDamage != null)
+            {
+                EventQueueManager.instance.AddEvent(new CmdAttack(1, toDamage));
+                Debug.Log("Player hit!!");
+            }
+            
+            // TODO: fijarse que este sea el evento indicado
+            EventsManager.instance.StudentLifeDamage(
+                other.gameObject.GetComponent<Actor>().Life, 
+                other.gameObject.GetComponent<Actor>().MaxLife);
+
         }
     }
 

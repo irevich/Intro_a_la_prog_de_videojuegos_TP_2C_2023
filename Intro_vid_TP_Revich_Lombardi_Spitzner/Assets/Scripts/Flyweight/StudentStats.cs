@@ -6,13 +6,13 @@ using UnityEngine;
 public class StudentStats : EntityStats
 {
     [SerializeField] private StudentStatsValues studentStats;
-    public float MovementSpeed => studentStats.MovementSpeed;
+    //public float MovementSpeed => studentStats.MovementSpeed;
     public float RotateSpeed => studentStats.RotateSpeed;
 }
 
 [System.Serializable]
 public struct StudentStatsValues
 {
-    public float MovementSpeed;
+    //public float MovementSpeed;
     public float RotateSpeed;
 }

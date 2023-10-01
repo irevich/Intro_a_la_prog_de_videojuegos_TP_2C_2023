@@ -8,8 +8,8 @@ public class FollowingEnemy : Enemy
     public float _radius = 12.0f;  // Radius of the circle
     public Vector3 _center;  // Center of the circle
 
-    private float _angle = 0;   
-   private void MoveInCircles()
+    private float _angle = 0; 
+    private void MoveInCircles()
     {
         float x = _center.x + _radius * Mathf.Cos(_angle);
         float z = _center.z + _radius * Mathf.Sin(_angle);
@@ -40,6 +40,7 @@ public class FollowingEnemy : Enemy
     {
       MoveInCircles();
     }
+   
    protected override void MoveTowardsPlayer()
    {
       Vector3 lookPos = _target.position;
