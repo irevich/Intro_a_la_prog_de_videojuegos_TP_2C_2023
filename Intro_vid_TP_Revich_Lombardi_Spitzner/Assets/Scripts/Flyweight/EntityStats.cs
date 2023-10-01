@@ -7,12 +7,13 @@ public class EntityStats : ScriptableObject
 {
     [SerializeField] private EntityStatsValues _stats;
     public int MaxLife => _stats.MaxLife;
+    public int MovementSpeed => _stats.MovementSpeed;
 }
 
 [System.Serializable]
 public struct EntityStatsValues
 {
     public int MaxLife;
-    //public int MovementSpeed;
+    public int MovementSpeed;
     //public int RotateSpeed;
 }

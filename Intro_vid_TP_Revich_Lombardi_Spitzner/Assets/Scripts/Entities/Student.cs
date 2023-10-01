@@ -104,14 +104,16 @@ public class Student : Actor, IMoveable
     #endregion
     
     #region IMOVEABLE_ACTIONS
-    public float MovementSpeed => _movementSpeed;
-    [SerializeField] private float _movementSpeed = 5.5f;
 
-    public float TurnSpeed => _turnSpeed;
-    [SerializeField] private float _turnSpeed = 25f;
-    public void Move(Vector3 direction) => transform.Translate(direction * _movementSpeed * Time.deltaTime);
-    public void Turn(Vector3 direction) => transform.Rotate(direction * _turnSpeed * Time.deltaTime, Space.Self);
+    public float MovementSpeed => _studentStats.MovementSpeed;//_movementSpeed;
+    //[SerializeField] private float _movementSpeed = 5.5f;
+
+    public float TurnSpeed => _studentStats.RotateSpeed;//_turnSpeed;
+    //[SerializeField] private float _turnSpeed = 25f;
+    public void Move(Vector3 direction) => transform.Translate(direction * MovementSpeed 
+                                                                         * Time.deltaTime);
+    public void Turn(Vector3 direction) => transform.Rotate(direction * TurnSpeed 
+                                                                      * Time.deltaTime, Space.Self);
     #endregion
-
-
+    
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8179769198132726970}
   - component: {fileID: 8189984506576033730}
   - component: {fileID: 6114103092228936105}
+  - component: {fileID: 926303531751254015}
   - component: {fileID: 6411415632538489920}
   m_Layer: 0
   m_Name: rack1
@@ -219,6 +220,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ca9bd9cdb3fbe8c42bfa1472eb2058fc, type: 3}
+--- !u!114 &926303531751254015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153582326421434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d473e425db45dca7da85d76243c390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &6411415632538489920
 BoxCollider:
   m_ObjectHideFlags: 0
