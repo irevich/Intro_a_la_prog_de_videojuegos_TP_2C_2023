@@ -10,6 +10,7 @@ public class Obstacle : MonoBehaviour
     
     private Collider _collider;
     //private Rigidbody _rigidbody;
+    [SerializeField] private EnemyStats _enemyStats;
     
     #region UNITY_EVENTS
 
@@ -34,7 +35,8 @@ public class Obstacle : MonoBehaviour
             IDamageable toDamage = other.gameObject.GetComponent<IDamageable>();
             if (toDamage != null)
             {
-                EventQueueManager.instance.AddEvent(new CmdAttack(10, toDamage));
+                EventQueueManager.instance.AddEvent(new CmdAttack(_enemyStats.damage, 
+                    toDamage));
                 Debug.Log("Player hit!!");
             }
             

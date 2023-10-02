@@ -12,8 +12,10 @@ public class Enemy : MonoBehaviour
     public Transform _target;
     public float _speed = 3f;
     public float _detectionDistance = 15.0f;
-
-
+    
+    [SerializeField]
+    protected EnemyStats _enemyStats;
+    
     public SphereCollider SphereCollider => _sphereCollider;
     
     public CapsuleCollider CapsuleCollider => _capsuleCollider;
@@ -144,7 +146,8 @@ public class Enemy : MonoBehaviour
             IDamageable toDamage = other.gameObject.GetComponent<IDamageable>();
             if (toDamage != null)
             {
-                EventQueueManager.instance.AddEvent(new CmdAttack(20, toDamage));
+                EventQueueManager.instance.AddEvent(new CmdAttack(_enemyStats.damage, 
+                    toDamage));
                 
                 // TODO: fijarse que este sea el evento indicado
                 EventsManager.instance.StudentLifeDamage(
