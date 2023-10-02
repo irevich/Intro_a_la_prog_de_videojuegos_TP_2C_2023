@@ -24,11 +24,11 @@ public class LoadScreenManager : MonoBehaviour
         while (!operation.isDone)
         {
             progress = operation.progress;
-            //_progressBar.fillAmount = progress;
-            //_progressText.text = $"{progress * 100f}%";
+            _progressBar.fillAmount = progress;
+            _progressText.text = $"{progress * 100f}%";
             if (operation.progress >= 0.9f)
             {
-                //_progressText.text = $"Press space bar to continue...";
+                _progressText.text = $"Press space bar to continue...";
                 if (Input.GetKeyDown(KeyCode.Space))
                     operation.allowSceneActivation = true;
             } 
