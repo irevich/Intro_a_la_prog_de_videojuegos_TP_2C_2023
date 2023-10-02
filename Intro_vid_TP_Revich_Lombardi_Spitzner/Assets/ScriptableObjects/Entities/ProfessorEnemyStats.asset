@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ProfessorEnemyStats
   m_EditorClassIdentifier: 
   _enemyStats:
-    damage: 0
+    damage: 30

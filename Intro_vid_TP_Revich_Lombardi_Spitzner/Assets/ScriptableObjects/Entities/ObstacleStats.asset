@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ObstacleStats
   m_EditorClassIdentifier: 
   _enemyStats:
-    damage: 0
+    damage: 10
