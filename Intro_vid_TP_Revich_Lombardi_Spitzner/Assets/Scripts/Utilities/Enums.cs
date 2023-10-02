@@ -15,6 +15,14 @@ public class Enums : MonoBehaviour
 
     #endregion
 
+    public enum Levels
+    {
+        MainMenu,
+        LoadScreen,
+        Level1,
+        Victory,
+        Defeat
+    }
     public enum Tags
     {
         Player
