@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviour
             IDamageable toDamage = other.gameObject.GetComponent<IDamageable>();
             if (toDamage != null)
             {
-                EventQueueManager.instance.AddEvent(new CmdAttack(1, toDamage));
+                EventQueueManager.instance.AddEvent(new CmdAttack(20, toDamage));
                 
                 // TODO: fijarse que este sea el evento indicado
                 EventsManager.instance.StudentLifeDamage(

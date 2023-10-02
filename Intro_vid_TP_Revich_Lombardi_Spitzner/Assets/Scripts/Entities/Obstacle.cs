@@ -34,7 +34,7 @@ public class Obstacle : MonoBehaviour
             IDamageable toDamage = other.gameObject.GetComponent<IDamageable>();
             if (toDamage != null)
             {
-                EventQueueManager.instance.AddEvent(new CmdAttack(1, toDamage));
+                EventQueueManager.instance.AddEvent(new CmdAttack(10, toDamage));
                 Debug.Log("Player hit!!");
             }
             
