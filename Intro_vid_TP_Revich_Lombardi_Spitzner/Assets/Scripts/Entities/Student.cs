@@ -19,7 +19,6 @@ public class Student : Actor, IMoveable
     [SerializeField] private KeyCode _jump = KeyCode.Space;
     [SerializeField] private KeyCode _slide = KeyCode.LeftControl;
 
-    [SerializeField] private KeyCode _hurt = KeyCode.Return; //Enter for temporary simulate hurt
     #endregion
 
     // Start is called before the first frame update
@@ -81,9 +80,6 @@ public class Student : Actor, IMoveable
             animator.SetBool("slide", false);
         }
 
-        //Simulate hurt
-        // TODO: take damage commmand?
-        if (Input.GetKeyDown(_hurt)) TakeDamage(5);
     }
 
     #region MOVEMENT_CMD

@@ -11,11 +11,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip _schoolBellFX;
     [SerializeField] private AudioClip _maleHurtFX;
     [SerializeField] private AudioClip _spottedFX;
+
     private int _maleHurtVolumeScale = 15;
 
     [SerializeField] private AudioSource _audioSource;
-    
+
+
     #region UNITY_EVENTS
+
 
     private void Start()
     {
@@ -28,9 +31,10 @@ public class SoundManager : MonoBehaviour
         _audioSource.Play();
         //Subscription to events
         EventsManager.instance.OnStudentLifeDamage += OnStudentLifeDamage;
-        //EventsManager.instance.OnGameOver += OnGameOver;
         EventsManager.instance.OnCharacterSpotted += OnStudentSpotted;
     }
+
+    
 
     #endregion
 

@@ -42,13 +42,16 @@ public class UiElementsManager : MonoBehaviour
     private void OnStudentLifeDamage(int currentLife, int maxLife)
     {
 
-        float lifePercentage = (float)currentLife / (float)maxLife;
-        _lifebar.fillAmount = lifePercentage;
-        _lifePercentage.text = $"{lifePercentage * 100} %";
+        if (currentLife >= 0) {
 
-        _lifePercentage.color = lifePercentage <= redLifePercentageLimit ? Color.red :
-                                lifePercentage <= yellowLifePercentageLimit ? Color.yellow :
-                                Color.green;
+            float lifePercentage = (float)currentLife / (float)maxLife;
+            _lifebar.fillAmount = lifePercentage;
+            _lifePercentage.text = $"{lifePercentage * 100} %";
+
+            _lifePercentage.color = lifePercentage <= redLifePercentageLimit ? Color.red :
+                                    lifePercentage <= yellowLifePercentageLimit ? Color.yellow :
+                                    Color.green;
+        }
 
     }
     #endregion
@@ -62,18 +65,19 @@ public class UiElementsManager : MonoBehaviour
 
     private void Update()
     {
+        
         //Check timer to see if the player lost, and update it
         if (_remainingTime > 0)
         {
             _remainingTime -= Time.deltaTime;
+            updateTimer();
         }
         else
         {
             _remainingTime = 0;
-            //EventsManager.instance.EventGameOver(false);
-            Debug.Log("Perdio :(");
+            //If time's out, player has lost
+            EventsManager.instance.EventGameOver(false);
         }
-        updateTimer();
     }
 
 

@@ -12,8 +12,6 @@ public class GoalDoor : MonoBehaviour
     #region UNITY_EVENTS
 
     
-
-    
     void Start()
     {
         _collider = GetComponent<Collider>();

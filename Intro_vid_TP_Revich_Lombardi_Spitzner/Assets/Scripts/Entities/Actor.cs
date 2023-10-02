@@ -24,7 +24,7 @@ public class Actor : MonoBehaviour, IDamageable
     protected void Start()
     {
         _life = MaxLife;
-        //EventsManager.instance.StudentLifeDamage(Life, MaxLife);
+        EventsManager.instance.StudentLifeDamage(Life, MaxLife);
     }
     #endregion
 
@@ -46,7 +46,7 @@ public class Actor : MonoBehaviour, IDamageable
     {
         Debug.Log($"{name} Died!!!!!!");
 
-        if (name.Equals("Character")) EventsManager.instance.EventGameOver(false);
+        if (name.Equals(Enums.Tags.Player.ToString())) EventsManager.instance.EventGameOver(false);
         else Destroy(gameObject);
     }
 
