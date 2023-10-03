@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33633431493675730}
   - component: {fileID: 23539834780025586}
   - component: {fileID: 3914257514929573821}
+  - component: {fileID: -3666085612130446283}
   m_Layer: 0
   m_Name: fire
   m_TagString: Untagged
@@ -101,3 +102,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 400505d5a5ae5cc47bc16dc4307f2c04, type: 3}
+--- !u!65 &-3666085612130446283
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197077392500550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8587182, y: 0.9011521, z: 0.37551877}
+  m_Center: {x: -0.029316813, y: 0.53053707, z: 0.14294954}
