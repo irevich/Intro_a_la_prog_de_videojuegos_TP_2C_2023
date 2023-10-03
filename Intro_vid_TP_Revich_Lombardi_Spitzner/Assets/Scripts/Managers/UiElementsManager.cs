@@ -22,6 +22,7 @@ public class UiElementsManager : MonoBehaviour
 
     private void updateTimer(){
 
+
         int minutes = Mathf.FloorToInt(_remainingTime / 60);
         int seconds = Mathf.FloorToInt(_remainingTime % 60);
         //Set timer text
@@ -30,8 +31,6 @@ public class UiElementsManager : MonoBehaviour
         if (minutes == 0 && seconds <= secondsLimit){
             _timerTime.color = Color.red;
         }
-
-
 
 
     }
@@ -60,24 +59,23 @@ public class UiElementsManager : MonoBehaviour
     void Start()
     {
         EventsManager.instance.OnStudentLifeDamage += OnStudentLifeDamage;
-        updateTimer();
     }
 
     private void Update()
     {
-        
+
         //Check timer to see if the player lost, and update it
-        if (_remainingTime > 0)
-        {
-            _remainingTime -= Time.deltaTime;
-            updateTimer();
-        }
-        else
-        {
-            _remainingTime = 0;
-            //If time's out, player has lost
-            EventsManager.instance.EventGameOver(false);
-        }
+            if (_remainingTime > 0)
+            {
+                updateTimer();
+                _remainingTime -= Time.deltaTime;
+            }
+            else
+            {
+                _remainingTime = 0;
+                //If time's out, player has lost
+                EventsManager.instance.EventGameOver(false);
+            }
     }
 
 
