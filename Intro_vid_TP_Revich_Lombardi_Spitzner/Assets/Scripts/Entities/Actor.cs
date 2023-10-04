@@ -24,7 +24,7 @@ public class Actor : MonoBehaviour, IDamageable
     protected void Start()
     {
         _life = MaxLife;
-        EventsManager.instance.StudentLifeDamage(Life, MaxLife);
+        EventsManager.instance.EventStudentLifeDamage(Life, MaxLife);
     }
     #endregion
 
@@ -36,7 +36,7 @@ public class Actor : MonoBehaviour, IDamageable
         print($"Life : {Life}");
         print($"MaxLife : {MaxLife}");
         print($"instance : {EventsManager.instance}");
-        EventsManager.instance.StudentLifeDamage(Life, MaxLife);
+        EventsManager.instance.EventStudentLifeDamage(Life, MaxLife);
         Debug.Log($"{name} Hit -> Life: {_life}!");
 
         if (_life <= 0) Die();

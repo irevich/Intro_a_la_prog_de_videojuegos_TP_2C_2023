@@ -19,7 +19,6 @@ public class SoundManager : MonoBehaviour
 
     #region UNITY_EVENTS
 
-
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -34,16 +33,15 @@ public class SoundManager : MonoBehaviour
         EventsManager.instance.OnCharacterSpotted += OnStudentSpotted;
     }
 
-    
-
     #endregion
 
     #region EVENTS
 
-    private void OnStudentLifeDamage(int currentLife, int maxLife){
-        _audioSource.PlayOneShot(_maleHurtFX,_maleHurtVolumeScale);
+    private void OnStudentLifeDamage(int currentLife, int maxLife)
+    {
+        _audioSource.PlayOneShot(_maleHurtFX, _maleHurtVolumeScale);
     }
-    
+
     private void OnStudentSpotted()
     {
         _audioSource.PlayOneShot(_spottedFX);
