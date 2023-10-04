@@ -2,20 +2,17 @@ using UnityEngine;
 
 public class CmdMovement : ICommand
 {
-    private Transform _transform;
+    private IMoveable _moveable;
     private Vector3 _direction;
-    private float _speed;
     
-    public CmdMovement(Transform transform, Vector3 direction, float speed)
+    public CmdMovement(IMoveable moveable, Vector3 direction)
     {
-        _transform = transform;
+        _moveable = moveable;
         _direction = direction;
-        _speed = speed;
     }
     
     public void Do()
     {
-        //Debug.Log("Doing Move");
-        _transform.Translate(_direction * (_speed * Time.deltaTime));
+        _moveable.Move(_direction);
     }
 }

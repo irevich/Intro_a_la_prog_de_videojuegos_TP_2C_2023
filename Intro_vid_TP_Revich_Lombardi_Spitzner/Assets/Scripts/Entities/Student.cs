@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Student : Actor, IMoveable
+public class Student : Actor
 {
-    // [SerializeField] private List<Gun> _guns;
-    // [SerializeField] private Gun _currentGun;
     public Animator animator;
 
+    public StudentStats StudentStats => _studentStats;
     [SerializeField] private StudentStats _studentStats;
 
+    private CharacterMovementController _characterMovementController;
 
     #region KEY_BINDINGS
 
@@ -24,9 +24,9 @@ public class Student : Actor, IMoveable
 
     void Start()
     {
+        _characterMovementController = GetComponent<CharacterMovementController>();
         base._entityStats = _studentStats;
         base.Start();
-        // SwitchGun(0);
         InitMovementCommands();
     }
 
@@ -34,8 +34,6 @@ public class Student : Actor, IMoveable
     {
         if (Input.GetKey(_moveForward))
         {
-            //EventQueueManager.instance.AddEvent(_cmdMoveForward);
-            // Move(Vector3.forward);
             _cmdMoveForward.Do();
             animator.SetFloat("walking", 1);
         }
@@ -46,8 +44,6 @@ public class Student : Actor, IMoveable
 
         if (Input.GetKey(_moveBack))
         {
-            //EventQueueManager.instance.AddEvent(_cmdMoveBack);
-            // Move(Vector3.back);
             _cmdMoveBack.Do();
             animator.SetBool("backwards", true);
         }
@@ -56,16 +52,12 @@ public class Student : Actor, IMoveable
 
         if (Input.GetKey(_moveLeft))
         {
-            //EventQueueManager.instance.AddEvent(_cmdRotateLeft);
-            // Turn(-Vector3.up);
             _cmdRotateLeft.Do();
         }
 
 
         if (Input.GetKey(_moveRight))
         {
-            //EventQueueManager.instance.AddEvent(_cmdRotateRight);
-            //Turn(Vector3.up);
             _cmdRotateRight.Do();
         }
 
@@ -92,14 +84,15 @@ public class Student : Actor, IMoveable
 
     private void InitMovementCommands()
     {
-        _cmdMoveForward = new CmdMovement(transform, Vector3.forward, _studentStats.MovementSpeed);
-        _cmdMoveBack = new CmdMovement(transform, -Vector3.forward, _studentStats.MovementSpeed);
-        _cmdRotateLeft = new CmdRotate(transform, -Vector3.up, _studentStats.RotateSpeed);
-        _cmdRotateRight = new CmdRotate(transform, Vector3.up, _studentStats.RotateSpeed);
+        _cmdMoveForward = new CmdMovement(_characterMovementController, Vector3.forward);
+        _cmdMoveBack = new CmdMovement(_characterMovementController, -Vector3.forward);
+        _cmdRotateLeft = new CmdRotate(_characterMovementController, -Vector3.up);
+        _cmdRotateRight = new CmdRotate(_characterMovementController, Vector3.up);
     }
 
     #endregion
 
+    /*
     #region IMOVEABLE_ACTIONS
 
     public float MovementSpeed => _studentStats.MovementSpeed;
@@ -113,4 +106,5 @@ public class Student : Actor, IMoveable
                                                                       * Time.deltaTime, Space.Self);
 
     #endregion
+    */
 }

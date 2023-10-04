@@ -15,5 +15,4 @@ public struct EntityStatsValues
 {
     public int MaxLife;
     public int MovementSpeed;
-    //public int RotateSpeed;
 }

@@ -2,19 +2,17 @@ using UnityEngine;
 
 public class CmdRotate : ICommand
 {
-    private Transform _transform;
+    private IMoveable _moveable;
     private Vector3 _direction;
-    private float _speed;
     
-    public CmdRotate(Transform transform, Vector3 direction, float speed)
+    public CmdRotate(IMoveable moveable, Vector3 direction)
     {
-        _transform = transform;
-        this._direction = direction;
-        _speed = speed;
+        _moveable = moveable;
+        _direction = direction;
     }
     
     public void Do()
     {
-        _transform.Rotate(_direction * (_speed * Time.deltaTime), Space.Self);
+        _moveable.Turn(_direction);
     }
 }

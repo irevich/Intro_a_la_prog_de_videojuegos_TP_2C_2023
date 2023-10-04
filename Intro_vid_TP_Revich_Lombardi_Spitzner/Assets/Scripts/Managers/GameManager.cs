@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
         //_gameOverText.text = _isVictory ? "You Win!" : "You Lose!";
         //_gameOverText.color = _isVictory ? Color.green : Color.red;
 
-        Invoke(nameof(LoadCreditsScreen), 3f);
+        LoadCreditsScreen();
+        //Invoke(nameof(LoadCreditsScreen), 3f);
     }
 
 

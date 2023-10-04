@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 {
     public Transform _target;
     public float _speed = 3f;
+    
 
     [SerializeField] protected EnemyStats _enemyStats;
 

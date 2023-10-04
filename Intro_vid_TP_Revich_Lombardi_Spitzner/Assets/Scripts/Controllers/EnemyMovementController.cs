@@ -1,7 +1,6 @@
-
 using UnityEngine;
 
-public class MovementController : IMoveable
+public class EnemyMovementController : MonoBehaviour, IMoveable
 {
     public float MovementSpeed { get; }
     public float TurnSpeed { get; }
