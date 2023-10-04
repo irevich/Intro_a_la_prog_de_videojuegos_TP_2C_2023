@@ -24,7 +24,6 @@ public class Actor : MonoBehaviour, IDamageable
     protected void Start()
     {
         _life = MaxLife;
-        EventsManager.instance.EventStudentLifeDamage(Life, MaxLife);
     }
     #endregion
 

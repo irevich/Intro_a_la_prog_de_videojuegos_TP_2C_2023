@@ -60,23 +60,22 @@ public class UiElementsManager : MonoBehaviour
     void Start()
     {
         EventsManager.instance.OnStudentLifeDamage += OnStudentLifeDamage;
-        updateTimer();
     }
 
     private void Update()
     {
         //Check timer to see if the player lost, and update it
-        if (_remainingTime > 0)
-        {
-            _remainingTime -= Time.deltaTime;
-            updateTimer();
-        }
-        else
-        {
-            _remainingTime = 0;
-            //If time's out, player has lost
-            EventsManager.instance.EventGameOver(false);
-        }
+            if (_remainingTime > 0)
+            {
+                updateTimer();
+                _remainingTime -= Time.deltaTime;
+            }
+            else
+            {
+                _remainingTime = 0;
+                //If time's out, player has lost
+                EventsManager.instance.EventGameOver(false);
+            }
     }
 
     #endregion
