@@ -10829,7 +10829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8713728185897760123, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 8713728185897760124, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_Height

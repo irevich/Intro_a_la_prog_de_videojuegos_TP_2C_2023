@@ -25,7 +25,7 @@ public class LoadScreenManager : MonoBehaviour
         {
             progress = operation.progress;
             _progressBar.fillAmount = progress;
-            _progressText.text = $"{progress * 100f}%";
+            _progressText.text = $"{(int) progress * 100f}%";
             if (operation.progress >= 0.9f)
             {
                 _progressText.text = $"Press space bar to continue...";
