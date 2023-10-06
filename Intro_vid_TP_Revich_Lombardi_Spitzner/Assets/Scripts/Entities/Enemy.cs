@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
 
         _sphereCollider.isTrigger = true;
-        // _sphereCollider.radius = 20f; // TODO: move to stats 
+        _sphereCollider.radius = _enemyStats.DetectionDistance;
 
         // _capsuleCollider = GetComponent<CapsuleCollider>();
         // _capsuleCollider.isTrigger = false;

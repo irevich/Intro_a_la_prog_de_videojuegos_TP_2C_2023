@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd7e26e5e6b487ca55048bd3d40729e, type: 3}
   m_Name: ProfessorEnemyStats
   m_EditorClassIdentifier: 
+  _stats:
+    MaxLife: 0
+    MovementSpeed: 4
   _enemyStats:
     damage: 30
-    speed: 3
+    detectionDistance: 40
