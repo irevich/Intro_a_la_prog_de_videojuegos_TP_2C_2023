@@ -13,10 +13,6 @@ public class Obstacle : MonoBehaviour
     private void Start()
     {
         _collider = GetComponent<Collider>();
-        //_rigidbody = GetComponent<Rigidbody>();
-
-        //_rigidbody.isKinematic = false;
-        //_rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
     }
 
     #endregion
@@ -32,10 +28,8 @@ public class Obstacle : MonoBehaviour
             {
                 EventQueueManager.instance.AddEvent(new CmdAttack(_enemyStats.damage,
                     toDamage));
-                Debug.Log("Player hit!!");
             }
 
-            // TODO: fijarse que este sea el evento indicado
             EventsManager.instance.EventStudentLifeDamage(
                 other.gameObject.GetComponent<Actor>().Life,
                 other.gameObject.GetComponent<Actor>().MaxLife);

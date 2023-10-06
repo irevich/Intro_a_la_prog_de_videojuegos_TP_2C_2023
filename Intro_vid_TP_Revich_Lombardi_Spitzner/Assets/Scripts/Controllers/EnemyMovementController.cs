@@ -5,11 +5,6 @@ using Random = UnityEngine.Random;
 
 public class EnemyMovementController : AbstractEnemyMovementController
 {
-    // public float MovementSpeed => GetComponent<Enemy>().EnemyStats.MovementSpeed;
-
-    // private Animator _animator => GetComponent<Animator>();
-    // private Transform _target;
-
     [SerializeField] private float _maxDistance = 3f;
     public Vector3 _currentDirection = new Vector3(1,0,0);
     private bool hasToTurn = false;

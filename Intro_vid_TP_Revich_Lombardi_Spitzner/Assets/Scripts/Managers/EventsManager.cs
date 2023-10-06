@@ -35,7 +35,7 @@ public class EventsManager : MonoBehaviour
         if (OnCharacterSpotted != null)
         {
             OnCharacterSpotted();
-            Debug.Log("Character Spotted");
+            // Debug.Log("Character Spotted");
         }
     }
 

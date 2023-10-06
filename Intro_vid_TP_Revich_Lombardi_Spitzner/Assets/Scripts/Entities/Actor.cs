@@ -32,18 +32,13 @@ public class Actor : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         _life -= damage;
-        print($"Life : {Life}");
-        print($"MaxLife : {MaxLife}");
-        print($"instance : {EventsManager.instance}");
         EventsManager.instance.EventStudentLifeDamage(Life, MaxLife);
-        Debug.Log($"{name} Hit -> Life: {_life}!");
 
         if (_life <= 0) Die();
     }
 
     public void Die()
     {
-        Debug.Log($"{name} Died!!!!!!");
 
         if (name.Equals(Enums.Tags.Player.ToString())) EventsManager.instance.EventGameOver(false);
         else Destroy(gameObject);

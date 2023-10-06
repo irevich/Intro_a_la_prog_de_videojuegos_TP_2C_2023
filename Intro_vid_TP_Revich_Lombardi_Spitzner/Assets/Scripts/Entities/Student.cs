@@ -92,19 +92,4 @@ public class Student : Actor
 
     #endregion
 
-    /*
-    #region IMOVEABLE_ACTIONS
-
-    public float MovementSpeed => _studentStats.MovementSpeed;
-
-    public float TurnSpeed => _studentStats.RotateSpeed;
-
-    public void Move(Vector3 direction) => transform.Translate(direction * MovementSpeed
-                                                                         * Time.deltaTime);
-
-    public void Turn(Vector3 direction) => transform.Rotate(direction * TurnSpeed
-                                                                      * Time.deltaTime, Space.Self);
-
-    #endregion
-    */
 }
