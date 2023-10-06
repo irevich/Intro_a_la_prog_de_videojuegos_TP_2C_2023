@@ -74,4 +74,5 @@ crashlytics-build.properties
 */[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Sketchfab for Unity plugin
+*/[Aa]ssets/Sketchfab For Unity.meta
 */[Aa]ssets/Sketchfab For Unity/*
