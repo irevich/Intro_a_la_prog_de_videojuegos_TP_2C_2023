@@ -18,15 +18,15 @@ public class Enemy : MonoBehaviour
     #region COLLIDERS
 
     public SphereCollider SphereCollider => _sphereCollider;
-    public CapsuleCollider CapsuleCollider => _capsuleCollider;
+    // public CapsuleCollider CapsuleCollider => _capsuleCollider;
     public Rigidbody Rb => _rigidbody;
     private SphereCollider _sphereCollider;
-    private CapsuleCollider _capsuleCollider;
+    // private CapsuleCollider _capsuleCollider;
     private Rigidbody _rigidbody;
 
     #endregion
 
-    private Animator _animator;
+    // private Animator _animator;
 
     #region UNITY_EVENTS
 
@@ -36,14 +36,14 @@ public class Enemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
 
         _sphereCollider.isTrigger = true;
-        _sphereCollider.radius = 20f; // TODO: move to stats 
+        // _sphereCollider.radius = 20f; // TODO: move to stats 
 
-        _capsuleCollider = GetComponent<CapsuleCollider>();
-        _capsuleCollider.isTrigger = false;
+        // _capsuleCollider = GetComponent<CapsuleCollider>();
+        // _capsuleCollider.isTrigger = false;
 
         _rigidbody.isKinematic = true;
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-        _animator = gameObject.GetComponent<Animator>();
+        // _animator = gameObject.GetComponent<Animator>();
 
         
         _enemyMovementController = GetComponent<AbstractEnemyMovementController>();
