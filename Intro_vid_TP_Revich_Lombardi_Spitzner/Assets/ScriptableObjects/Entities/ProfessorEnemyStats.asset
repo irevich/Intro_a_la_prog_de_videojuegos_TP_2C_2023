@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyStats:
     damage: 30
+    speed: 3

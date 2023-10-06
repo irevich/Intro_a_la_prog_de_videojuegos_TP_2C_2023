@@ -36,17 +36,17 @@ public class FollowingEnemy : Enemy
       _center = transform.position;
    }
 
-   protected override void UndetectedMove()
-    {
-      MoveInCircles();
-    }
+   // protected override void UndetectedMove()
+   //  {
+   //    MoveInCircles();
+   //  }
    
-   protected override void MoveTowardsPlayer()
-   {
-      Vector3 lookPos = _target.position;
-      lookPos.y = transform.position.y;
-      transform.position = Vector3.MoveTowards(transform.position, 
-                _target.position, _speed * Time.deltaTime);
-      transform.LookAt(lookPos);
-   }
+   // protected override void MoveTowardsPlayer()
+   // {
+   //    Vector3 lookPos = _target.position;
+   //    lookPos.y = transform.position.y;
+   //    transform.position = Vector3.MoveTowards(transform.position, 
+   //              _target.position, _speed * Time.deltaTime);
+   //    transform.LookAt(lookPos);
+   // }
 }

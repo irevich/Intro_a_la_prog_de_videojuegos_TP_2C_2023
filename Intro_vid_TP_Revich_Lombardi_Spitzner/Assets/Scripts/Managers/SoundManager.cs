@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip _maleHurtFX;
     [SerializeField] private AudioClip _spottedFX;
 
-    private int _maleHurtVolumeScale = 15;
+    private float _maleHurtVolumeScale = 0.75f;
 
     [SerializeField] private AudioSource _audioSource;
 

@@ -7,11 +7,13 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SphereCollider), typeof(CapsuleCollider), typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
-    public Transform _target;
+    // public Transform _target;
     public float _speed = 3f;
     
 
-    [SerializeField] protected EnemyStats _enemyStats;
+    public EnemyStats EnemyStats => _enemyStats;
+    [SerializeField] private EnemyStats _enemyStats;
+    public AbstractEnemyMovementController _enemyMovementController;
 
     #region COLLIDERS
 
@@ -42,64 +44,80 @@ public class Enemy : MonoBehaviour
         _rigidbody.isKinematic = true;
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         _animator = gameObject.GetComponent<Animator>();
+
+        
+        _enemyMovementController = GetComponent<AbstractEnemyMovementController>();
+        InitMovementCommands();
     }
 
-    private void Update()
+    // private void Update()
+    // {
+    // }
+
+    // protected virtual void MoveTowardsPlayer()
+    // {
+    //     Vector3 newPos = transform.position;
+    //     newPos.x = _target.position.x;
+    //     // TODO: speed and IMovable
+    //     // transform.position = Vector3.MoveTowards(transform.position, 
+    //     //     _target.position, _speed * Time.deltaTime);
+    //     if (_target.position.x > transform.position.x)
+    //     {
+    //         _animator.Play("Move Right");
+    //     }
+    //     else if (_target.position.x < transform.position.x)
+    //     {
+    //         _animator.Play("Move Left");
+    //     }
+
+    //     transform.position = Vector3.MoveTowards(transform.position, newPos, _speed * Time.deltaTime);
+    // }
+
+    // private Vector3 RandomVector(float min, float max)
+    // {
+    //     var x = Random.Range(min, max);
+    //     var y = 0;
+    //     var z = 0;
+    //     return new Vector3(x, y, z);
+    // }
+
+    // protected virtual void UndetectedMove()
+    // {
+    //     Vector3 newPos = transform.position + RandomVector(-5, 5);
+    //     if (newPos.x > transform.position.x)
+    //     {
+    //         _animator.Play("Move Right");
+    //     }
+    //     else if (newPos.x < transform.position.x)
+    //     {
+    //         _animator.Play("Move Left");
+    //     }
+
+    //     transform.position = Vector3.MoveTowards(transform.position, newPos, _speed * Time.deltaTime);
+    // }
+
+    #region MOVEMENT_CMD
+
+    private CmdEnemyMovement _cmdMoveTowardsPlayer;
+    private CmdEnemyUndetectedMove _cmdUndetectedMove;
+    private void InitMovementCommands()
     {
+        _cmdMoveTowardsPlayer = new CmdEnemyMovement(_enemyMovementController);
+        _cmdUndetectedMove = new CmdEnemyUndetectedMove(_enemyMovementController);
     }
+    #endregion
 
-    protected virtual void MoveTowardsPlayer()
-    {
-        Vector3 newPos = transform.position;
-        newPos.x = _target.position.x;
-        // TODO: speed and IMovable
-        // transform.position = Vector3.MoveTowards(transform.position, 
-        //     _target.position, _speed * Time.deltaTime);
-        if (_target.position.x > transform.position.x)
-        {
-            _animator.Play("Move Right");
-        }
-        else if (_target.position.x < transform.position.x)
-        {
-            _animator.Play("Move Left");
-        }
-
-        transform.position = Vector3.MoveTowards(transform.position, newPos, _speed * Time.deltaTime);
-    }
-
-    private Vector3 RandomVector(float min, float max)
-    {
-        var x = Random.Range(min, max);
-        var y = 0;
-        var z = 0;
-        return new Vector3(x, y, z);
-    }
-
-    protected virtual void UndetectedMove()
-    {
-        Vector3 newPos = transform.position + RandomVector(-5, 5);
-        if (newPos.x > transform.position.x)
-        {
-            _animator.Play("Move Right");
-        }
-        else if (newPos.x < transform.position.x)
-        {
-            _animator.Play("Move Left");
-        }
-
-        transform.position = Vector3.MoveTowards(transform.position, newPos, _speed * Time.deltaTime);
-    }
 
     private void FixedUpdate()
     {
-        if (_target)
+        if (_enemyMovementController._target)
         {
             //if (Vector3.Distance(transform.position,_target.position) <= _detectionDistance) MoveTowardsPlayer();
-            MoveTowardsPlayer();
+            _cmdMoveTowardsPlayer.Do();
         }
         else
         {
-            UndetectedMove();
+            _cmdUndetectedMove.Do();
         }
     }
 
@@ -112,15 +130,20 @@ public class Enemy : MonoBehaviour
         // TODO: ojo con el nombre
         if (other.tag.Equals(Enums.Tags.Player.ToString()))
         {
-            _target = other.transform;
+            //_target = other.transform;
+            _enemyMovementController._target = other.transform;
             EventsManager.instance.EventCharacterSpotted();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag.Equals(Enums.Tags.Player.ToString()))
-            _target = null;
+        if (other.tag.Equals(Enums.Tags.Player.ToString())) 
+        {
+            //_target = null;
+            _enemyMovementController._target = null;
+        }
+            
     }
 
     #endregion
