@@ -11,9 +11,8 @@ public class EventsManager : MonoBehaviour
 
     private void Awake()
     {
-        print("En awake del events manager");
         if (instance != null)
-            Destroy(this); // Asegurarse de que tenga lo mas basico
+            Destroy(this);
         instance = this;
     }
 
@@ -35,7 +34,6 @@ public class EventsManager : MonoBehaviour
         if (OnCharacterSpotted != null)
         {
             OnCharacterSpotted();
-            // Debug.Log("Character Spotted");
         }
     }
 

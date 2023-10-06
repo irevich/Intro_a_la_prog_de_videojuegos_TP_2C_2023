@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         EventsManager.instance.OnGameOver += OnGameOver;
-        //_gameOverText.text = string.Empty;
     }
 
     #endregion
@@ -28,11 +27,7 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
         _isVictory = isVictory;
 
-        //_gameOverText.text = _isVictory ? "You Win!" : "You Lose!";
-        //_gameOverText.color = _isVictory ? Color.green : Color.red;
-
         LoadCreditsScreen();
-        //Invoke(nameof(LoadCreditsScreen), 3f);
     }
 
 
