@@ -10,7 +10,11 @@ public class EnemyMovementController : AbstractEnemyMovementController
     // private Animator _animator => GetComponent<Animator>();
     // private Transform _target;
 
-
+    [SerializeField] private float _maxDistance = 3f;
+    public Vector3 _currentDirection = new Vector3(1,0,0);
+    private bool hasToTurn = false;
+    private bool isInitPositionDefined = false;
+    private float initXPosition;
     private Vector3 RandomVector(float min, float max)
     {
         var x = Random.Range(min, max);
@@ -20,7 +24,26 @@ public class EnemyMovementController : AbstractEnemyMovementController
     }
     public override void UndetectedMove()
     {
-        Vector3 newPos = transform.position + RandomVector(-5, 5);
+        if (!isInitPositionDefined)
+        {
+            isInitPositionDefined = true;
+            initXPosition = transform.position.x;
+        }
+            
+        Vector3 newPos = transform.position + _currentDirection;
+        if (Mathf.Abs(transform.position.x - initXPosition)  >  _maxDistance)
+        {
+            if (!hasToTurn)
+            {
+                _currentDirection.x = -_currentDirection.x;
+                hasToTurn = true;
+            }    
+        }
+        else
+        {
+            if (hasToTurn)
+                hasToTurn = false;
+        }
         if (newPos.x > transform.position.x)
         {
             _animator.Play("Move Right");
@@ -49,4 +72,6 @@ public class EnemyMovementController : AbstractEnemyMovementController
 
         transform.position = Vector3.MoveTowards(transform.position, newPos, MovementSpeed * Time.deltaTime);
     }
+
+    
 }
