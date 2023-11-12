@@ -2925,6 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c298514120b45eb8346427ef6b127e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teacherQuantity: 1
   studentQuantity: 4
   bookRacksQuantity: 8
   backpackQuantity: 10
@@ -2932,6 +2933,7 @@ MonoBehaviour:
   max_position: 5
   bookLeftBorder: 3.5
   bookRightBorder: 10
+  teacherPrefab: {fileID: 3525869065292186023, guid: 5f9a285e392134184ba61c0ec464d6e5, type: 3}
   studentEnemyPrefab: {fileID: 6144569663923092203, guid: 6fdfaeebf7f3444cdbfeaab8fd801374, type: 3}
   studentEnemyZAxisPrefab: {fileID: 1102876099534596167, guid: 2eb73e05401394c5aa561be33833bad1, type: 3}
   bookRackPrefab: {fileID: 3221005107061786966, guid: 6aa17e227ff244d2b9ac989bec274f5d, type: 3}
@@ -8119,6 +8121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c298514120b45eb8346427ef6b127e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teacherQuantity: 1
   studentQuantity: 4
   bookRacksQuantity: 4
   backpackQuantity: 6
@@ -8126,6 +8129,7 @@ MonoBehaviour:
   max_position: 5
   bookLeftBorder: 3.5
   bookRightBorder: 10
+  teacherPrefab: {fileID: 3525869065292186023, guid: 5f9a285e392134184ba61c0ec464d6e5, type: 3}
   studentEnemyPrefab: {fileID: 6144569663923092203, guid: 6fdfaeebf7f3444cdbfeaab8fd801374, type: 3}
   studentEnemyZAxisPrefab: {fileID: 1102876099534596167, guid: 2eb73e05401394c5aa561be33833bad1, type: 3}
   bookRackPrefab: {fileID: 3221005107061786966, guid: 6aa17e227ff244d2b9ac989bec274f5d, type: 3}
@@ -11018,7 +11022,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2686007839921747385, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_Name
-      value: Teacher
+      value: Teacher Old
       objectReference: {fileID: 0}
     - target: {fileID: 2686007839921747385, guid: eb546f810007146ffa9bfc86e7ce5eef, type: 3}
       propertyPath: m_IsActive
@@ -11200,6 +11204,10 @@ PrefabInstance:
     - target: {fileID: 3525869065292186023, guid: 5f9a285e392134184ba61c0ec464d6e5, type: 3}
       propertyPath: m_Name
       value: Teacher
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525869065292186023, guid: 5f9a285e392134184ba61c0ec464d6e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4298043280508574493, guid: 5f9a285e392134184ba61c0ec464d6e5, type: 3}
       propertyPath: m_RootOrder

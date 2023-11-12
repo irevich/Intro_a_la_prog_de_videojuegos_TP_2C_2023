@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StudentEnemySpawner : MonoBehaviour
 {
+    public int teacherQuantity = 1;
     public int studentQuantity = 2;
     public int bookRacksQuantity = 2;
     public int backpackQuantity = 3;
@@ -12,6 +13,7 @@ public class StudentEnemySpawner : MonoBehaviour
     public float bookLeftBorder = 3.5f;
     public float bookRightBorder = 10;
     // public Transform parent;
+    public GameObject teacherPrefab;
     public GameObject studentEnemyPrefab;
     public GameObject studentEnemyZAxisPrefab;
     public GameObject bookRackPrefab;
@@ -116,11 +118,10 @@ public class StudentEnemySpawner : MonoBehaviour
             }
             
         }
-        if (it > 9)
+        if (it >= 20)
         {
-            Debug.Log("Reached iteration limit on book spawn");
+            Debug.Log("Reached iteration limit on obstacle spawn");
         }
-        Debug.Log(it);
     }
 
     void SpawnObstacleZAxis(GameObject prefab, int quantity, Quaternion rotation)
@@ -163,9 +164,24 @@ public class StudentEnemySpawner : MonoBehaviour
         }
         if (it >= 20)
         {
-            Debug.Log("Reached iteration limit on book spawn");
+            Debug.Log("Reached iteration limit on obstacle spawn");
         }
-        Debug.Log(it);
+    }
+
+    private void SpawnTeacher()
+    {
+        float old_max = max_position;
+        max_position = max_position - (max_position-min_position)/2;
+        switch (axisToToggle)
+        {
+            case AxisType.X:
+                SpawnObstacle(teacherPrefab,teacherQuantity,Quaternion.Euler(0, 0, 0));
+                break;
+            case AxisType.Z:
+                SpawnObstacleZAxis(teacherPrefab,teacherQuantity,Quaternion.Euler(0, 0, 0));
+                break;
+        }
+        max_position = old_max;
     }
 
     void Start()
@@ -174,19 +190,15 @@ public class StudentEnemySpawner : MonoBehaviour
         {
             case AxisType.X:
                 SpawnStudentEnemies(studentEnemyPrefab);
-                Debug.Log(existingObstacles);
+                SpawnTeacher();
                 SpawnObstacle(bookRackPrefab,bookRacksQuantity,Quaternion.Euler(0, 0, 0));
-                Debug.Log(existingObstacles);
                 SpawnObstacle(backpackPrefab,backpackQuantity,Quaternion.Euler(0, -90, 0));
-                Debug.Log(existingObstacles);
                 break;
             case AxisType.Z:
                 SpawnStudentEnemiesZAxis(studentEnemyZAxisPrefab,Quaternion.Euler(0, 90, 0));
-                Debug.Log(existingObstacles);
+                SpawnTeacher();
                 SpawnObstacleZAxis(bookRackPrefab,bookRacksQuantity,Quaternion.Euler(0, 90, 0));
-                Debug.Log(existingObstacles);
                 SpawnObstacleZAxis(backpackPrefab,backpackQuantity,Quaternion.Euler(0, 0, 0));
-                Debug.Log(existingObstacles);
                 break;
         }
         
