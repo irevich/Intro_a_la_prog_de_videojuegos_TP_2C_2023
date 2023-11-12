@@ -10,14 +10,75 @@ public class EnemyMovementController : AbstractEnemyMovementController
     private bool hasToTurn = false;
     private bool isInitPositionDefined = false;
     private float initXPosition;
+
+    public enum AxisType
+    {
+        X,
+        // Y,
+        Z
+    }
+
+    public AxisType axisToToggle = AxisType.X;
     private Vector3 RandomVector(float min, float max)
     {
         var x = Random.Range(min, max);
         var y = 0;
-        var z = 0;
+        var z = Random.Range(min, max);
         return new Vector3(x, y, z);
     }
-    public override void UndetectedMove()
+
+    // public void Start()
+    // {
+    //     Debug.Log("Did start enemy student");
+    //     switch (axisToToggle)
+    //     {
+    //         case AxisType.X:
+    //             initXPosition = transform.position.x;
+    //             break;
+    //         case AxisType.Z:
+    //             initXPosition = transform.position.z;
+    //             break;
+    //     }
+        
+    // }
+
+    private void UndetectedMoveZ()
+    {
+        if (!isInitPositionDefined)
+        {
+            isInitPositionDefined = true;
+            initXPosition = transform.position.z;
+            _currentDirection = new Vector3(0,0,1);
+        }
+        
+        Vector3 newPos = transform.position + _currentDirection;
+        // Debug.Log(Mathf.Abs(transform.position.z - initXPosition));
+        if (Mathf.Abs(transform.position.z - initXPosition)  >  _maxDistance)
+        {
+            if (!hasToTurn)
+            {
+                _currentDirection.z = -_currentDirection.z;
+                hasToTurn = true;
+            }    
+        }
+        else
+        {
+            if (hasToTurn)
+                hasToTurn = false;
+        }
+        if (newPos.z > transform.position.z)
+        {
+            _animator.Play("Move Right");
+        }
+        else if (newPos.z < transform.position.z)
+        {
+            _animator.Play("Move Left");
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, newPos, MovementSpeed * Time.deltaTime);
+    }
+
+    private void UndetectedMoveX()
     {
         if (!isInitPositionDefined)
         {
@@ -51,7 +112,23 @@ public class EnemyMovementController : AbstractEnemyMovementController
         transform.position = Vector3.MoveTowards(transform.position, newPos, MovementSpeed * Time.deltaTime);
     }
 
-    public override void MoveTowardsPlayer()
+    public override void UndetectedMove()
+    {
+        
+        switch (axisToToggle)
+        {
+            case AxisType.X:
+                UndetectedMoveX();
+                break;
+            case AxisType.Z:
+                UndetectedMoveZ();
+                break;
+        }
+    }
+
+    
+
+    private void MoveTowardsPlayerXAxis()
     {
         Vector3 newPos = transform.position;
         newPos.x = _target.position.x;
@@ -66,6 +143,37 @@ public class EnemyMovementController : AbstractEnemyMovementController
         }
 
         transform.position = Vector3.MoveTowards(transform.position, newPos, MovementSpeed * Time.deltaTime);
+    }
+
+    private void MoveTowardsPlayerZAxis()
+    {
+        Vector3 newPos = transform.position;
+        newPos.z = _target.position.z;
+        
+        if (_target.position.z > transform.position.z)
+        {
+            _animator.Play("Move Right");
+        }
+        else if (_target.position.z < transform.position.z)
+        {
+            _animator.Play("Move Left");
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, newPos, MovementSpeed * Time.deltaTime);
+    }
+
+    public override void MoveTowardsPlayer()
+    {
+        
+        switch (axisToToggle)
+        {
+            case AxisType.X:
+                MoveTowardsPlayerXAxis();
+                break;
+            case AxisType.Z:
+                MoveTowardsPlayerZAxis();
+                break;
+        }
     }
 
     
