@@ -10,6 +10,7 @@ public class LoadScreenManager : MonoBehaviour
     [SerializeField] private Image _progressBar;
     [SerializeField] private Text _progressText;
 
+
     private void Start()
     {
         StartCoroutine(LoadSceneAsync());
@@ -17,7 +18,8 @@ public class LoadScreenManager : MonoBehaviour
 
     IEnumerator LoadSceneAsync()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync((int)Enums.Levels.Level1);
+        //Get the level to load and load it async
+        AsyncOperation operation = SceneManager.LoadSceneAsync(getLevelToLoad());
         float progress = 0f;
 
         operation.allowSceneActivation = false;
@@ -34,5 +36,22 @@ public class LoadScreenManager : MonoBehaviour
             } 
             yield return null;
         }
+    }
+
+    private int getLevelToLoad(){
+        int levelToLoad;
+        switch (GameManager.getCurrentLevel()) {
+            case 1:
+                levelToLoad = (int)Enums.Levels.Level1;
+                break;
+            case 2:
+                levelToLoad = (int)Enums.Levels.Level2;
+                break;
+            default:
+                levelToLoad = (int)Enums.Levels.MainMenu;
+                GameManager.resetCurrentLevel();
+                break;
+        }
+        return levelToLoad;
     }
 }

@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool _isVictory = false;
     [SerializeField] private Text _gameOverText;
 
+    //Variable to manage current level
+    private static int currentLevel = 1;
+
     #region UNITY_EVENTS
 
     void Start()
@@ -27,6 +30,9 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
         _isVictory = isVictory;
 
+        //Change current level
+        currentLevel = _isVictory ? currentLevel + 1 : 1;
+
         LoadCreditsScreen();
     }
 
@@ -34,6 +40,14 @@ public class GameManager : MonoBehaviour
     private void LoadCreditsScreen()
     {
         SceneManager.LoadScene(_isGameOver && _isVictory ? (int)Enums.Levels.Victory : (int)Enums.Levels.Defeat);
+    }
+
+    public static int getCurrentLevel(){
+        return currentLevel;
+    }
+
+    public static void resetCurrentLevel(){
+        currentLevel = 1;
     }
 
     #endregion
