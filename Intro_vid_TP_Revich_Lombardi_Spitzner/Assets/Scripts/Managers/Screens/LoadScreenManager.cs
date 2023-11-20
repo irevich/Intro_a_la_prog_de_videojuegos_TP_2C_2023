@@ -41,6 +41,9 @@ public class LoadScreenManager : MonoBehaviour
     private int getLevelToLoad(){
         int levelToLoad;
         switch (GameManager.getCurrentLevel()) {
+            case 0:
+                levelToLoad = (int)Enums.Levels.Intro;
+                break;
             case 1:
                 levelToLoad = (int)Enums.Levels.Level1;
                 break;

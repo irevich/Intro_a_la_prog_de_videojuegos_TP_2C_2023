@@ -10,9 +10,13 @@ public class NextLevelDoor : MonoBehaviour
         // Check if the collided object has the tag "NextLevel"
         if (other.CompareTag("Player"))
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            int nextSceneIndex = currentSceneIndex + 1;
-            SceneManager.LoadScene(nextSceneIndex);
+            // int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            // int nextSceneIndex = currentSceneIndex + 1;
+            // SceneManager.LoadScene(nextSceneIndex);
+
+            GameManager.incrementCurrentLevel();
+            SceneManager.LoadScene((int) Enums.Levels.LoadScreen);
+            
         }
     }
 

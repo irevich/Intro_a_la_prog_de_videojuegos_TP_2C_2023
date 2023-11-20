@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text _gameOverText;
 
     //Variable to manage current level
-    private static int currentLevel = 1;
+    private static int currentLevel = 0;
 
     #region UNITY_EVENTS
 
@@ -47,7 +47,11 @@ public class GameManager : MonoBehaviour
     }
 
     public static void resetCurrentLevel(){
-        currentLevel = 1;
+        currentLevel = 0;
+    }
+
+    public static void incrementCurrentLevel(){
+        currentLevel++;
     }
 
     #endregion

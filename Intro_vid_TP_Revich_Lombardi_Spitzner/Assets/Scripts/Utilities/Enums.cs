@@ -19,6 +19,7 @@ public class Enums : MonoBehaviour
     {
         MainMenu,
         LoadScreen,
+        Intro,
         Level1,
         Level2,
         Victory,
