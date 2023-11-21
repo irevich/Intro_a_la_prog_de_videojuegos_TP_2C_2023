@@ -571,6 +571,7 @@ MonoBehaviour:
   _schoolBellFX: {fileID: 8300000, guid: 616c2b7d01918844f88a52faedab4942, type: 3}
   _maleHurtFX: {fileID: 8300000, guid: 4cfbd2f4107214044b8b32a68e86894d, type: 3}
   _spottedFX: {fileID: 8300000, guid: 06b4ea86f29b8f74f9d9afac2d2dd9bf, type: 3}
+  _spottedFromGoalDoorFX: {fileID: 8300000, guid: 57bd9a8bf359da8409b0bed32cbf2873, type: 3}
   _audioSource: {fileID: 0}
 --- !u!82 &53611807
 AudioSource:
@@ -2927,8 +2928,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teacherQuantity: 1
   studentQuantity: 4
-  bookRacksQuantity: 8
-  backpackQuantity: 10
+  bookRacksQuantity: 4
+  backpackQuantity: 5
   min_position: -44
   max_position: 5
   bookLeftBorder: 3.5
@@ -11194,6 +11195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5327e910d6936e48a8cd5c63b2e6ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _raycastRange: 15
 --- !u!1001 &4336701365548939036
 PrefabInstance:
   m_ObjectHideFlags: 0

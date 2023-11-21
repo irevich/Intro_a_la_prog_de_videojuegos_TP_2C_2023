@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip _schoolBellFX;
     [SerializeField] private AudioClip _maleHurtFX;
     [SerializeField] private AudioClip _spottedFX;
+    [SerializeField] private AudioClip _spottedFromGoalDoorFX;
 
     private float _maleHurtVolumeScale = 0.75f;
 
@@ -31,6 +32,7 @@ public class SoundManager : MonoBehaviour
         //Subscription to events
         EventsManager.instance.OnStudentLifeDamage += OnStudentLifeDamage;
         EventsManager.instance.OnCharacterSpotted += OnStudentSpotted;
+        EventsManager.instance.OnStudentSpottedFromGoalDoor += OnStudentSpottedFromGoalDoor;
     }
 
     #endregion
@@ -45,6 +47,11 @@ public class SoundManager : MonoBehaviour
     private void OnStudentSpotted()
     {
         _audioSource.PlayOneShot(_spottedFX);
+    }
+
+    private void OnStudentSpottedFromGoalDoor()
+    {
+        _audioSource.PlayOneShot(_spottedFromGoalDoorFX);
     }
 
     #endregion

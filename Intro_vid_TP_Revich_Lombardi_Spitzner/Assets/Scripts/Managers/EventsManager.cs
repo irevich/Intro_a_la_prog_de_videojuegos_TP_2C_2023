@@ -21,13 +21,19 @@ public class EventsManager : MonoBehaviour
     #region GAME_MANAGER_ACTIONS
 
     public event Action<bool> OnGameOver;
-    public event Action OnCharacterSpotted;
 
     public void EventGameOver(bool isVictory)
     {
         if (OnGameOver != null)
             OnGameOver(isVictory);
     }
+
+    #endregion
+
+    #region STUDENT_SPOTTED_ACTIONS
+
+    public event Action OnCharacterSpotted;
+    public event Action OnStudentSpottedFromGoalDoor;
 
     public void EventCharacterSpotted()
     {
@@ -37,7 +43,16 @@ public class EventsManager : MonoBehaviour
         }
     }
 
+    public void EventStudentSpottedFromGoalDoor()
+    {
+        if (OnStudentSpottedFromGoalDoor != null)
+        {
+            OnStudentSpottedFromGoalDoor();
+        }
+    }
+
     #endregion
+
 
     #region STUDENT_ACTIONS
 
