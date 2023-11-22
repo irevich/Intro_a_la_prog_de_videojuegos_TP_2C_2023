@@ -28,6 +28,9 @@ public class Student : Actor
         base._entityStats = _studentStats;
         base.Start();
         InitMovementCommands();
+        //Subscription to events
+        EventsManager.instance.OnStudentWaterPuddleEntered += OnStudentWaterPuddleEntered;
+        EventsManager.instance.OnStudentWaterPuddleRecovered += OnStudentWaterPuddleRecovered;
     }
 
     void FixedUpdate()
@@ -89,6 +92,25 @@ public class Student : Actor
         _cmdRotateLeft = new CmdRotate(_characterMovementController, -Vector3.up);
         _cmdRotateRight = new CmdRotate(_characterMovementController, Vector3.up);
     }
+
+    #endregion
+
+    #region EVENTS
+
+    private void OnStudentWaterPuddleEntered()
+    {
+        _characterMovementController = GetComponent<CharacterWaterPuddleMovementController>();
+        _cmdMoveForward = new CmdMovement(_characterMovementController, Vector3.forward);
+        _cmdMoveBack = new CmdMovement(_characterMovementController, -Vector3.forward);
+    }
+
+    private void OnStudentWaterPuddleRecovered()
+    {
+        _characterMovementController = GetComponent<CharacterMovementController>();
+        _cmdMoveForward = new CmdMovement(_characterMovementController, Vector3.forward);
+        _cmdMoveBack = new CmdMovement(_characterMovementController, -Vector3.forward);
+    }
+
 
     #endregion
 

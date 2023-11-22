@@ -16,4 +16,5 @@ MonoBehaviour:
     MaxLife: 100
     MovementSpeed: 5
   studentStats:
+    WaterPuddleMovementSpeed: 1.5
     RotateSpeed: 250
