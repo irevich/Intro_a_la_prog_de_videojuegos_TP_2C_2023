@@ -64,5 +64,21 @@ public class EventsManager : MonoBehaviour
             OnStudentLifeDamage(currentLife, maxLife);
     }
 
+    public event Action OnStudentWaterPuddleEntered;
+
+    public void EventStudentWaterPuddleEntered()
+    {
+        if (OnStudentWaterPuddleEntered != null)
+            OnStudentWaterPuddleEntered();
+    }
+
+    public event Action OnStudentWaterPuddleRecovered;
+
+    public void EventStudentWaterPuddleRecovered()
+    {
+        if (OnStudentWaterPuddleRecovered != null)
+            OnStudentWaterPuddleRecovered();
+    }
+
     #endregion
 }
