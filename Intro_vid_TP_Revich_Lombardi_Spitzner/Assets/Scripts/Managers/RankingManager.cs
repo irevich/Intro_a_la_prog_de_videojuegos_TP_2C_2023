@@ -18,6 +18,7 @@ public class RankingManager : MonoBehaviour
         _database = new Database();
         
         _players = _database.GetAllRankingRecords();
+        _players = _players.OrderByDescending(p => p.Level).ThenByDescending(p => p.Won).ThenByDescending(p=> p.Won ? p.TimeRemaining : -p.TimeRemaining).ToList();
         foreach (RankingModel player in _players)
         {
             RankingUIElement element = Instantiate(_rankingElementPrefab, _parentGrid).GetComponent<RankingUIElement>();

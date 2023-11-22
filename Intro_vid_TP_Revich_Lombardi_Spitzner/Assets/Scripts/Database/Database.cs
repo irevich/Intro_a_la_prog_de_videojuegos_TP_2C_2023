@@ -17,8 +17,8 @@ public class Database
         _connPath = $"URI=file:{Application.dataPath}/{_dbName}";
         _dbConn = new SqliteConnection(_connPath);
         
-        DropTableRankingRecords();
-        CrateTableRankingRecords();
+        //DropTableRankingRecords();
+        CreateTableRankingRecords();
     }
 
     #region COMMON_ACTIONS
@@ -59,7 +59,7 @@ public class Database
         }
     }
 
-    private void CrateTableRankingRecords()
+    private void CreateTableRankingRecords()
     {
         string query = 
             $"CREATE TABLE IF NOT EXISTS {TableRanking} ( " +
@@ -88,8 +88,7 @@ public class Database
             _dbConn.Open();
 
             IDbCommand command = _dbConn.CreateCommand();
-            string sqlQuery = "SELECT level, won, timeRemaining FROM RankingRecords ORDER BY level DESC, won DESC, " +
-                              "timeRemaining DESC";
+            string sqlQuery = "SELECT level, won, timeRemaining FROM RankingRecords";
             command.CommandText = sqlQuery;
 
             IDataReader reader = command.ExecuteReader();
