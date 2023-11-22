@@ -16,6 +16,8 @@ public class GameLevelManager : MonoBehaviour
     
     public void LoadDefeat() => SceneManager.LoadScene((int) Levels.Defeat);
     
+    public void LoadRanking() => SceneManager.LoadScene((int) Levels.Ranking);
+    
     
     public void Exit() => Application.Quit();
 }

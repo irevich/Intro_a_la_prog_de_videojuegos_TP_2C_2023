@@ -23,7 +23,8 @@ public class Enums : MonoBehaviour
         Level1,
         Level2,
         Victory,
-        Defeat
+        Defeat,
+        Ranking
     }
     public enum Tags
     {

@@ -13,12 +13,15 @@ public class GameManager : MonoBehaviour
 
     //Variable to manage current level
     private static int currentLevel = 0;
+    private static int maxLevel = 2;
+    private Database _database;
 
     #region UNITY_EVENTS
 
     void Start()
     {
         EventsManager.instance.OnGameOver += OnGameOver;
+        _database = new Database();
     }
 
     #endregion
@@ -30,8 +33,17 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
         _isVictory = isVictory;
 
+        if (!_isVictory || currentLevel == maxLevel)
+        {
+            // get remaining time from ui elements manager;
+            GameObject uiElementsManagerObject = GameObject.Find("Managers");
+            UiElementsManager uiElementsManager = uiElementsManagerObject.GetComponent<UiElementsManager>();
+            float remainingTime = uiElementsManager.RemainingTime;
+            _database.AddRankingRecord(new RankingModel(currentLevel, _isVictory, remainingTime)); //UiElementsManager.RemainingTime));
+        }
         //Change current level
         currentLevel = _isVictory ? currentLevel + 1 : 1;
+        
 
         LoadCreditsScreen();
     }

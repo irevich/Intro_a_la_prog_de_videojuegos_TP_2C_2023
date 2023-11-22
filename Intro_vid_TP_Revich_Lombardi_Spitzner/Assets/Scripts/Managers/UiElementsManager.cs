@@ -16,9 +16,10 @@ public class UiElementsManager : MonoBehaviour
     #endregion
 
     #region TIMER_LOGIC
+    public  float RemainingTime => _remainingTime;
 
     [SerializeField] private Text _timerTime;
-    [SerializeField] private float _remainingTime;
+    [SerializeField] private  float _remainingTime;
 
     private int secondsLimit = 10;
 
