@@ -17,7 +17,7 @@ public class Database
         _connPath = $"URI=file:{Application.dataPath}/{_dbName}";
         _dbConn = new SqliteConnection(_connPath);
         
-        //DropTableRankingRecords();
+        // DropTableRankingRecords();
         CreateTableRankingRecords();
     }
 
