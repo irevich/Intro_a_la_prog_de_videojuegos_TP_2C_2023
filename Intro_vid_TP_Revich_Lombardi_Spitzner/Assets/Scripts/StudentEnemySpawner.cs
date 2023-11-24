@@ -135,9 +135,10 @@ public class StudentEnemySpawner : MonoBehaviour
         GameObject obj;
 
 
-        while (i<quantity && it <10)
+        while (i<quantity && it <20)
         {
             it++;
+            
             isValid = true;
             randomValue = Random.Range(min_position,max_position);
             for (int j=0; isValid && j<existingObstacles.Count;j++)
@@ -172,6 +173,7 @@ public class StudentEnemySpawner : MonoBehaviour
     {
         float old_max = max_position;
         max_position = max_position - (max_position-min_position)/2;
+        
         switch (axisToToggle)
         {
             case AxisType.X:
