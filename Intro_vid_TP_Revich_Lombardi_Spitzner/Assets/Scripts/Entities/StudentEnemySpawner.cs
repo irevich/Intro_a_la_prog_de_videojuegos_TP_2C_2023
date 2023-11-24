@@ -24,7 +24,6 @@ public class StudentEnemySpawner : MonoBehaviour
     public enum AxisType
     {
         X,
-        // Y,
         Z
     }
 

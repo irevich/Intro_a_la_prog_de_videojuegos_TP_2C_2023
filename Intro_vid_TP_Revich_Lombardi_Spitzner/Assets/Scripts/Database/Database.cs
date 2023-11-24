@@ -99,7 +99,7 @@ public class Database
                     reader.GetFloat(2));
                 records.Add(record);
 
-                Debug.Log(record.ToString());
+                
             }
 
             reader.Close();

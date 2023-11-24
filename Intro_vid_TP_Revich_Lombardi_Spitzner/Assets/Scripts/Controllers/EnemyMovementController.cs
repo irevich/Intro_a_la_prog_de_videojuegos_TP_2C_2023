@@ -14,7 +14,6 @@ public class EnemyMovementController : AbstractEnemyMovementController
     public enum AxisType
     {
         X,
-        // Y,
         Z
     }
 
@@ -27,20 +26,6 @@ public class EnemyMovementController : AbstractEnemyMovementController
         return new Vector3(x, y, z);
     }
 
-    // public void Start()
-    // {
-    //     Debug.Log("Did start enemy student");
-    //     switch (axisToToggle)
-    //     {
-    //         case AxisType.X:
-    //             initXPosition = transform.position.x;
-    //             break;
-    //         case AxisType.Z:
-    //             initXPosition = transform.position.z;
-    //             break;
-    //     }
-        
-    // }
 
     private void UndetectedMoveZ()
     {
@@ -52,7 +37,7 @@ public class EnemyMovementController : AbstractEnemyMovementController
         }
         
         Vector3 newPos = transform.position + _currentDirection;
-        // Debug.Log(Mathf.Abs(transform.position.z - initXPosition));
+        
         if (Mathf.Abs(transform.position.z - initXPosition)  >  _maxDistance)
         {
             if (!hasToTurn)
