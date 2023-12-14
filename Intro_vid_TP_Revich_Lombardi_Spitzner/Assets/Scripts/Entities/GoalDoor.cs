@@ -31,7 +31,7 @@ public class GoalDoor : MonoBehaviour
         //Basic info of the ray to shoot
         Vector3 raycastDirection = getRaycastDirection();
         Ray ray = new Ray(transform.position, raycastDirection);
-        Debug.DrawRay(transform.position, raycastDirection * _raycastRange, Color.red);
+        // Debug.DrawRay(transform.position, raycastDirection * _raycastRange, Color.red);
 
         //Check for collisions if the student hasn't been detected yet
         if (!_studentDetected && Physics.Raycast(ray, out hitInfo, _raycastRange)){
