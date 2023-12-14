@@ -12,7 +12,7 @@ public class StudentEnemySpawner : MonoBehaviour
     public float max_position;
     public float bookLeftBorder = 3.5f;
     public float bookRightBorder = 10;
-    // public Transform parent;
+    
     public GameObject teacherPrefab;
     public GameObject studentEnemyPrefab;
     public GameObject studentEnemyZAxisPrefab;

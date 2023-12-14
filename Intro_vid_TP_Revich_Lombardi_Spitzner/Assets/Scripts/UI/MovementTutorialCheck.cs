@@ -7,10 +7,8 @@ public class MovementTutorialCheck : MonoBehaviour
     int current_tutorial = 0;
     bool wasDetected = false;
 
-     public List<GameObject> canvasList;
+    public List<GameObject> canvasList;
 
-
-    // Update is called once per frame
     void Update()
     {
         if (wasDetected)
